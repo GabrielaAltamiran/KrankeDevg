@@ -6,6 +6,7 @@ function saludar(){
     let mensjeBienvenido ="Bienvenido " +nombre+" "+apellido;
     mostrarTexto("lblResultado",mensjeBienvenido);
     mostrarImagen("imgSaludo","./imgenes/GT.gif");
+    mostrarTextoEnCaja("txtNombre"," ")
 }
 function recuperaraTexto(idComponente){
 let componente;
@@ -14,6 +15,7 @@ componente=document.getElementById(idComponente);
 valorIngresado=componente.value;
 return valorIngresado;
 }
+
 function recuperarInt(idComponente){
     let valorCaja=recuperaraTexto(idComponente);
     let valorEntero=parseInt(valorCaja);
@@ -29,6 +31,12 @@ function mostrarTexto(idComponente,mensaje){
     componente=document.getElementById(idComponente);
     componente.innerText=mensaje;
 }
+function mostrarTextoEnCaja(idComponente,mensaje){
+    let componente;
+    componente=document.getElementById(idComponente);
+    componente.value=mensaje;
+}
+
 function mostrarImagen(idComponente,rutaImagen){
     let componente;
     componente=document.getElementById(idComponente);
