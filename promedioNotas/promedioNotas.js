@@ -16,9 +16,23 @@ function calcularPromedioNotas(){
     cmpRespuesta = document.getElementById("lblPromedio");
     // Actualizar el contenido HTML del elemento con el resultado formateado
     cmpRespuesta.innerHTML, respuesta;
-    if(promedioDecimales>7){ 
+    if(promedioDecimales>= 7){ 
         mostrarImagen("gifImagenes","exito.gif");
     }else{
         mostrarImagen("gifImagenes","fracaso.gif");
     }
+    if(promedioDecimales < 5 && promedioDecimales > 0 ){
+        mostrarImagen("gifImagenes","reprobado.gif");
+        mostrarTexto("lblResultados","REPROBADO");
+    }else if(promedioDecimales >= 5 && promedioDecimales <= 8){
+        mostrarImagen("gifImagenes","buenTrabajo.gif");
+        mostrarTexto("lblResultados","BUEN TRABAJO");
+    }else if (promedioDecimales > 8 && promedioDecimales <= 10){
+        mostrarImagen("gifImagenes","exelente.gif");
+        mostrarTexto("lblResultados","EXCELENTE");
+    }else {
+        mostrarImagen("gifImagenes","incorrecto.gif");
+        mostrarTexto("lblResultados","DATOS INCORRECTOS");
+    }
 }
+
