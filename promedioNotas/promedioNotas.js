@@ -16,11 +16,6 @@ function calcularPromedioNotas(){
     cmpRespuesta = document.getElementById("lblPromedio");
     // Actualizar el contenido HTML del elemento con el resultado formateado
     cmpRespuesta.innerHTML, respuesta;
-    if(promedioDecimales>= 7){ 
-        mostrarImagen("gifImagenes","exito.gif");
-    }else{
-        mostrarImagen("gifImagenes","fracaso.gif");
-    }
     if(promedioDecimales < 5 && promedioDecimales > 0 ){
         mostrarImagen("gifImagenes","reprobado.gif");
         mostrarTexto("lblResultados","REPROBADO");
@@ -35,4 +30,6 @@ function calcularPromedioNotas(){
         mostrarTexto("lblResultados","DATOS INCORRECTOS");
     }
 }
+
+
 
