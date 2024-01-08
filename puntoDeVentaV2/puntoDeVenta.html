@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="utilitarios.js"></script>
+  <script src="puntoDeVenta.js"></script>
+  <script src="serviciosPuntoDeVenta.js"></script>
+  <link rel="stylesheet" href="puntoDeVenta.css">
+</head>
+
+<body>
+  <div class="principal">
+    <div class="logoEscuela">
+      <img src="logoKrakeDev.png" width="350px" />
+    </div>
+    <div class="contenido">
+      <div class="titulo">
+        PUNTO DE VENTA
+      </div>
+      <div class="nombreDeProducto">
+        <div class="tituloCampo" id="txtProducto" >
+          PRODUCTO
+        </div>
+        <div>
+          <input type="text" class="cajaTexto" id="txtProducto" />
+          <div class="error" id="lblError1"></div>
+        </div>
+      </div>
+      <div class="nombreDeProducto">
+        <div class="tituloCampo" id="txtCantidad">
+          CANTIDAD
+        </div>
+        <div>
+          <input type="text" class="cajaTexto" id="txtCantidad" />
+          <div class="error" id="lblError2"></div>
+        </div>
+      </div>
+      <div class="nombreDeProducto">
+        <div class="tituloCampo" id="txtPrecio">
+          PRECIO
+        </div>
+
+        <div>
+          <input type="text" class="cajaTexto" id="txtPrecio" />
+          <div class="error" id="lblError3"></div>
+        </div>
+      </div>
+
+      <div class="botones">
+        <div class="contenedorBoton">
+          <input type="button" value="TOTAL" class="estiloBoton" onclick="calcularDescuentoPorVolumen();"/>
+          <div>
+            <input type="button" value="LIMPIAR" class="estiloBoton" onclick="limpiar()"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div class="imagenResultado">
+          <div class="tituloCampo" id="lblSubtotal">
+            SUBTOTAL:
+          </div>
+          <div id="lblResultado">
+            0.0
+          </div>
+          <div class="imagenResultado">
+            <div class="tituloCampo" id="lblDescuento">
+              DESCUENTO:
+            </div>
+            <div id="lblResultado">
+              0.0
+            </div>
+            <div class="imagenResultado">
+              <div class="tituloCampo" id="lblValorIVA">
+                IVA12%:
+              </div>
+              <div id="lblResultado">
+                0.0
+              </div>
+              <div class="imagenResultado">
+                <div class="tituloCampo" id="lblTotal">
+                  TOTAL:
+                </div>
+                <div id="lblResultado">
+                  0.0
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+</body>
+
+</html>
