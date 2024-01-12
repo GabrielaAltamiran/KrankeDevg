@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="placas.js"></script>
+    <script src="serviciosPlacas.js"></script>
+    <script src="utilitariosCadenas.js"></script>
+    <link rel="stylesheet" href="placas.css">
+</head>
+
+<body>
+    <h1 class="titulo">Validacion de placa vehicular Ecuador</h1>
+    <h2 class="placaEstilo">Ingrese placa</h2>
+    <input type="text" class="cajaTexto" id="txtPlaca" />
+
+    <h3 class="provincia" id="lblProvincias"></h3>
+    <h3 class="vehiculo" id="lblTipoVehiculo"></h3>
+    <h3 class="picoYplaca" id="lblPicoYplaca"></h3>
+    <h3 class="validacion" id="lblValidacion"></h3>
+    <h3 class="error" id="lblError"></h3>
+
+    <p><input type="button" class="boton" value="VALIDAR" onclick="validarPlaca()" /></p>
+    <p><input type="button" class="boton" value="LIMPIAR" onclick="limpiar()"/></p>
+</body>
+
+</html>
