@@ -1,0 +1,88 @@
+body {
+    color: black;
+    background-image: url(dc65514af549445c0aa64ccb7bb3f5c0.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.titulo {
+    text-shadow: 4px 4px white;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+    color: transparent;
+    text-align: center;
+}
+
+.placaEstilo {
+    text-shadow: 4px 4px white;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+    color: transparent;
+}
+
+.cajaTexto {
+    color: white;
+    background-color: rgb(2, 9, 65);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.provincia {
+
+    text-shadow: 4px 4px white;
+    -webkit-text-stroke-color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+.vehiculo {
+    text-shadow: 4px 4px white;
+    -webkit-text-stroke-color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.picoYplaca{
+    text-shadow: 4px 4px white;
+    -webkit-text-stroke-color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.validacion{
+    text-shadow: 4px 4px white;
+    -webkit-text-stroke-color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.error{
+   color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.boton{
+    background-color: #231b7b; 
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.boton:hover {
+    background-color:#231b7b; 
+    color: white;
+    border:1px;
+    border-color: black;
+    border-radius: 5px;
+}
+.boton:active{
+    background-color: #080348; 
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+
+}
