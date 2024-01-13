@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JUEGA PIEDRA PAPEL O TIJERA</title>
-    <script src="juego.js"></script> 
+    <script src="juego.js"></script>
     <script src="servicioJuego.js"></script>
     <script src="utilitarios.js"></script>
     <link rel="stylesheet" href="juego.css">
@@ -13,18 +13,35 @@
 
 <body>
 
-    <h1>JUEGA PIEDRA PAPEL O TIJERA</h1>
+    <body>
 
-    <!-- Imágenes de las opciones -->
-    <img src="./imagenes/piedra.png"  width="200px" onclick="jugar('piedra')">
-    <img src="./imagenes/papel.png" width="200px" onclick="jugar('papel')">
-    <img src="./imagenes/tijeras.png"  width="200px" onclick="jugar('tijera')">
+        <h1>JUEGA PIEDRA PAPEL O TIJERA</h1>
 
-    <!-- Imagen seleccionada por la computadora -->
-    <img id="imagenComputadora" />
-    <!-- Texto para indicar quién ganó la partida -->
-    <p id="resultadoTexto"></p>
+        <!-- Imágenes de las opciones -->
+        <img src="./imagenes/piedra.png" width="150px" alt="Piedra" onclick="jugar('piedra')">
+        <img src="./imagenes/papel.png" width="150px" alt="Papel" onclick="jugar('papel')">
+        <img src="./imagenes/tijera.png" width="150px" alt="Tijera" onclick="jugar('tijera')">
 
+        <!-- Imagen seleccionada por la computadora -->
+        <div>
+            <h3>COMPUTADOR</h3>
+            <img id="imagenComputadora" width="150px" />
+        </div>
+
+        <!-- Texto para indicar quién ganó la partida -->
+        <p id="resultadoTexto"></p>
+
+        <!-- Texto para indicar si se ganó la partida -->
+        <p id="ganadorTexto"></p>
+
+        <!-- Puntajes -->
+        <p id="puntosUsuario">Puntos Usuario: 0</p>
+        <p id="puntosComputador">Puntos Computador: 0</p>
+
+        <!-- Botón para iniciar una nueva partida -->
+        <button onclick="limpiar()">NUEVA PARTIDA</button>
+
+    </body>
 </body>
 
 </html>
