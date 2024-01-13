@@ -36,3 +36,33 @@ function recorrerCadenaInversa(cadena) {
     }
     return resultado;
 }
+//Buscar letras 
+function buscarLetra(cadena, letra) {
+    let letras;
+    let exieteLetra = false;
+    for (let i = 0; i < cadena.length; i++) {
+        letras = cadena.charAt(i);
+        if (letras == letra) {
+            exieteLetra = true;
+        }
+    }
+    if (exieteLetra == true) {
+        return true;
+
+    } else {
+        return false;
+
+    }
+}
+function contarMayuscula(cadena) {
+    let letra;
+    let contadorMayusculas;
+    for (let i = 0; i < cadena.length; i++) {
+        letra = cadena.charAt(i);
+        if(esMayuscula(letra)){
+            contadorMayusculas++;
+        }
+
+    }
+    console.log(contadorMayusculas);
+}
