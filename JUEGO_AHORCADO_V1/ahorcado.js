@@ -7,3 +7,13 @@ function esMayuscula(caracter) {
         return false;
     }
 }
+let palabraSecreta;
+function guardarPalabra() {
+    let palabraIngresad = document.getElementById('txtSecreta').value;
+    if (palabraIngresad.length === 5 && esMayuscula(palabraIngresad)) {
+        palabraSecreta = palabraIngresad;
+        console.log("Palbara ingresada: ", palabraSecreta);
+    }else{
+        alert("Debe ingresar una palabra de 5 letras mayusculas");
+    }
+}
