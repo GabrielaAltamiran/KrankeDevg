@@ -1,24 +1,19 @@
-calcularDescuento = function(monto,porcentajeDescuento){
-    let montoEntero=parseFloat(monto);
-    let enteroDescuento=parseInt(porcentajeDescuento);
-    let resultadoporcentaje=(montoEntero*enteroDescuento)/100;
-    return resultadoporcentaje;
+calcularValorDescuento=function(monto, porcentajededescuento){
+   descuento= (monto*porcentajededescuento)/100;
+   return descuento;
 }
-calcularIVA=function(monto,descuento){
-   let montoEntero=parseFloat(monto);
-     let resultadoConIva=((montoEntero-descuento)*12)/100;
-   return resultadoConIva;
-}
-calcularSubTotal =function (precio,cantidad){
-   let totalPagar;
-   let resultadoPagar=precio*cantidad;
-   totalPagar=resultadoPagar
-   return totalPagar;
 
+calcularIva=function(monto){
+   iva=(monto*12)/100;
+   return iva;
 }
-calcularTotal = function(subtotal,descuento,IVA){
-   let valorTotal;
-   let resultadovalorTotal=subtotal-descuento+IVA;
-   valorTotal=resultadovalorTotal
-   return valorTotal;
+
+calcularSubtotal=function(precio,cantidad){
+   totalapagar=precio*cantidad;
+   return totalapagar;
+}
+
+calcularTotal=function(subtotal,descuento,iva){
+   valorTotalaPagar=subtotal-descuento+iva;
+   return valorTotalaPagar;
 }
