@@ -91,17 +91,24 @@ tbody tr:nth-child(odd) {
   }
   
   table {
-    background-color: #0b0c0c;
+    
+    background-color: #6a51cf;
+    color: #0b0c0c;
     width: 100%;
     
   }
   td{
     text-align: center;
     
+    
+  }
+  tr{
+    text-align: center;
+    color: #0b0c0c;
   }
   .areaTabla{
     margin-top: 20px;
-    
+    color: #0b0c0c;
     
   }
 .estiloBoton:hover {
