@@ -2,10 +2,8 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="utilitarios.js"></script>
     <script src="roles.js"></script>
+    <script src="utilitarios.js"></script>
     <link rel="stylesheet" href="roles.css">
 </head>
 
@@ -15,10 +13,10 @@
             <input type="button" value="EMPLEADO" class="estiloBoton" onclick="mostrarOpcionEmpleado();" />
         </div>
         <div class="contenedorBoton">
-            <input type="button" value="ROL" class="estiloBoton" onclick="mostaraOpcionRol();" />
+            <input type="button" value="ROL" class="estiloBoton" onclick="mostrarOpcionRol();"/>
         </div>
         <div class="contenedorBoton">
-            <input type="button" value="RESUMEN" class="estiloBoton" onclick="mostaropcionResumen();" />
+            <input type="button" value="RESUMEN" class="estiloBoton" onclick="mostrarOpcionResumen();"/>
         </div>
 
     </div>
@@ -35,7 +33,7 @@
                     </div>
                 </div>
                 <div class="contenedorBoton">
-                    <input type="button" value="BUSCAR" class="estiloBoton" />
+                    <input type="button" value="BUSCAR" class="estiloBoton" onclick="ejecutarBusqueda();"/>
                 </div>
             </div>
 
@@ -78,13 +76,13 @@
                 </div>
                 <div class="botones">
                     <div class="contenedorBoton">
-                        <input type="button" value="NUEVO" class="estiloBoton" onclick="ejecutarDeNuevo();" />
+                        <input type="button" value="NUEVO" class="estiloBoton"  onclick="ejecutarNuevo();"/>
                     </div>
                     <div class="contenedorBoton">
-                        <input type="button" value="GUARDAR" class="estiloBoton" id="btnGuardar" onclick="guardar() ;" />
+                        <input type="button" value="GUARDAR" class="estiloBoton" id="btnGuardar" onclick="guardar();" />
                     </div>
                     <div class="contenedorBoton">
-                        <input type="button" value="LIMPIAR" class="estiloBoton" />
+                        <input type="button" value="LIMPIAR" class="estiloBoton"  />
                     </div>
                 </div>
                 <div id="tablaEmpleados" class="areaTabla">
@@ -92,7 +90,7 @@
                 </div>
             </div>
             <div class="logoEscuela">
-                <img src="./imagenes/2830573.png" width="80%" />
+                <img src="./imagenes/2830573.png"  width="80%" />
             </div>
         </div>
     </div>
@@ -170,7 +168,7 @@
                 </div>
                 <div class="botones">
                     <div class="contenedorBoton">
-                        <input type="button" value="GUARDAR" class="estiloBoton" />
+                        <input type="button" value="GUARDAR" class="estiloBoton" onclick="guardar();"/>
                     </div>
                 </div>
             </div>
@@ -182,7 +180,7 @@
     <div id="divResumen">
         <div class="principal">
             <div class="area">
-
+              
             </div>
             <div class="area">
                 <div id="tablaResumen" class="areaTabla">

@@ -1,159 +1,184 @@
-let esNuevo = false;
 let empleados = [
     { cedula: "1714616123", nombre: "John", apellido: "Cena", sueldo: 500.0 },
     { cedula: "0914632123", nombre: "Luisa", apellido: "Gonzalez", sueldo: 900.0 },
-    { cedula: "8512479305", nombre: "Genesis", apellido: "Mendoza", sueldo: 750.30 }
+    { cedula: "8512479305", nombre: "Genesis", apellido: "Mendoza", sueldo: 750.30 },
+    { cedula: "1755841002", nombre: "GEN", apellido: "MEN", sueldo: 780.30 }
+
 ]
-function mostrarOpcionEmpleado() {
+let esNUevo = false;
+mostrarOpcionEmpleado = function () {
     mostrarComponente("divEmpleado");
     ocultarComponente("divRol");
     ocultarComponente("divResumen");
-    deshabilitarComponente("txtCedula");
-    deshabilitarComponente("txtNombre");
-    deshabilitarComponente("txtApellido");
-    deshabilitarComponente("txtSueldo");
-    deshabilitarComponente("btnGuardar");
-    mostrarEmpelado();
+    mostrarEmpleado();
 }
-function mostaraOpcionRol() {
+mostrarOpcionRol = function () {
     mostrarComponente("divRol");
+    ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
-    ocultarComponente("divEmpleado");
 }
-function mostaropcionResumen() {
+mostrarOpcionResumen = function () {
     mostrarComponente("divResumen");
-    ocultarComponente("divRol");
     ocultarComponente("divEmpleado");
+    ocultarComponente("divRol");
 }
-function mostrarEmpelado() {
-    let tablaEmpleado = document.getElementById("tablaEmpleados");
-    let contenidoTablaEmple = "<Table><tr>" +
+mostrarEmpleado = function () {
+    let cmpTabla = document.getElementById("tablaEmpleados");
+    let tabla = "<table><tr>" +
         "<th>Cedula</th>" +
-        "<th>Nombre</th>" +
-        "<th>Apellido</th>" +
-        "<th>Sueldo</th>" +
-        "</tr>";
-    let datosEmpleados = "<Table><tr>"
-    for (let i = 0; i < empleados.length; i++) {
-        datosEmpleados = empleados[i];
-        contenidoTablaEmple +=
-            "<tr><td>" + datosEmpleados.cedula + "</td>" 
-            + "<td>" + datosEmpleados.nombre + "</td>" 
-            + "<td>" + datosEmpleados.apellido + "</td>" 
-            + "<td>" + datosEmpleados.sueldo + "</td>"
+        "<th>NOMBRE</th>" +
+        "<th>APELLIDO</th>" +
+        "<th>SUELDO</th>" +
+        "</tr>"
+    let elementosTabla;
+    for (i = 0; i < empleados.length; i++) {
+        elementosTabla = empleados[i];
+        tabla +=
+            "<tr><td>" + elementosTabla.cedula + "</td>" +
+            "<td>" + elementosTabla.nombre + "</td>" +
+            "<td>" + elementosTabla.apellido + "</td>" +
+            "<td>" + elementosTabla.sueldo + "</td>" +
             "</tr>"
     }
-    contenidoTablaEmple += "</table>"
-    tablaEmpleado.innerHTML = contenidoTablaEmple;
+    tabla += "</table>"
+    cmpTabla.innerHTML = tabla;
     deshabilitarComponente("txtCedula");
     deshabilitarComponente("txtNombre");
     deshabilitarComponente("txtApellido");
     deshabilitarComponente("txtSueldo");
     deshabilitarComponente("btnGuardar");
 }
-function ejecutarDeNuevo() {
+ejecutarNuevo = function () {
     habilitarComponente("txtCedula");
     habilitarComponente("txtNombre");
     habilitarComponente("txtApellido");
     habilitarComponente("txtSueldo");
     habilitarComponente("btnGuardar");
-    esNuevo = true;
+    esNUevo = true;
 }
-function buscarEmpleado(cedula) {
-    let datosEmpleado;
-    let empleadoEncontrado = null;
+
+buscarEmpleado = function (cedula) {
+    let elementosEmpleado;
+    let elementoEncontrado = null;
     for (let i = 0; i < empleados.length; i++) {
-        datosEmpleado = empleados[i];
-        if (datosEmpleado.cedula == cedula) {
-            return empleadoEncontrado;
-        } else {
-            return null;
+        elementosEmpleado = empleados[i];
+        if (elementosEmpleado.cedula == cedula) {
+            elementoEncontrado = elementosEmpleado;
+            break
         }
     }
-
-
+    return elementoEncontrado;
 }
-function agregarEmpleado(empleado) {
-    let agregar = buscarEmpleado(empleados.cedula);
-    if (agregar == null) {
+agregarEmpleado = function (empleado) {
+    let resultadoEmpleo;
+    resultadoEmpleo = buscarEmpleado(empleado.cedula)
+    if (resultadoEmpleo == null) {
         empleados.push(empleado);
         return true;
     } else {
-        alert("Ya existe el empleado con la cedula:" + " " + empleado.cedula);
+        alert("ya existe el empleado con la cedula : " + empleado.cedula);
         return false;
     }
 }
+habili = function () {
+    habilitarComponente("txtCedula");
+    habilitarComponente("txtNombre");
+    habilitarComponente("txtApellido");
+    habilitarComponente("txtSueldo");
+    habilitarComponente("btnGuardar");
+}
+deshabili = function () {
+    deshabilitarComponente("txtCedula");
+    deshabilitarComponente("txtNombre");
+    deshabilitarComponente("txtApellido");
+    deshabilitarComponente("txtSueldo");
+    deshabilitarComponente("btnGuardar");
+}
 
-
-function guardar() {
-    let valorCedula = recuperarTexto("txtCedula");
-    let valorNombre = recuperarTexto("txtNombre");
-    let valorApellido = recuperarTexto("txtApellido");
-    let valorSueldo = recuperarFloat("txtSueldo");
-    //-----------Validacion de la cedula------------
-    cedulaValidacion = false
-    if (valorCedula.length != 10) {
+guardar = function () {
+    let cedula = recuperarTexto("txtCedula");
+    let nombre = recuperarTexto("txtNombre");
+    let apellido = recuperarTexto("txtApellido");
+    let sueldo = recuperarFloat("txtSueldo");
+    //-------------validacion de la cedula------
+    cedulaValidacion = false // debe ser false
+    if (cedula.length != 10) {
         cedulaValidacion = true;
     }
-    //-----------Validacion del nombre------------
-    let nombreMayuscula = 0;
-    for (let i = 0; i < valorNombre.length; i++) {
-        let letra = valorCedula.charCodeAt(i)
+    //----------validacion del el nombre ---------
+    let mayusculaValidacion1 = 0;                 // debe ser true nombre
+    for (let i = 0; i < nombre.length; i++) {
+        let letra = nombre.charCodeAt(i)
         if (letra >= 65 && letra <= 90) {
-            nombreMayuscula++;
+            mayusculaValidacion1++;
         }
     }
-    //-----------Validacion del apellido------------
-    let apellidoMasyuculas = 0;
-    for (let i = 0; i < valorApellido.length; i++) {
-        let letra = valorApellido.charCodeAt(i)
-        if (letra >= 65 && letra <= 90) {
-            apellidoMasyuculas++;
+    //------validacion del apeellido----------
+    let mayusculaValidacion2 = 0;                 // debe ser true apellido
+    for (let i = 0; i < apellido.length; i++) {
+        let letra2 = apellido.charCodeAt(i)
+        if (letra2 >= 65 && letra2 <= 90) {
+            mayusculaValidacion2++;
         }
     }
-    //-----------Validacion del sueldo------------
-    let validarSueldo = false
-    if (validarSueldo >= 400 && validarSueldo <= 5000) {
-        validarSueldo = true
+    //---------validacion del sueldo----------
+    let sueldoValidacion = false             // debe ser true sueldo 
+    if (sueldo >= 400 && sueldo <= 5000) {
+        sueldoValidacion = true;
     }
-    //---------Si hubo un error--------
+    // --------------Si hubo un erro ---------------------------------
     if (cedulaValidacion == true) {
         mostrarTexto("lblErrorCedula", "Error debe ingresar 10 digitos");
     } else {
         mostrarTexto("lblErrorCedula", "");
     }
-    if (nombreMayuscula != valorNombre.length || nombreMayuscula == 0 || valorNombre.length < 3) {
-        mostrarTexto("lblErrorNombre", "Error debe tener 3 carcteres en mayuscula");
+    if (mayusculaValidacion1 != nombre.length || mayusculaValidacion1 == 0 || nombre.length < 3) {
+        mostrarTexto("lblErrorNombre", "Error debe ingresar letras mayuscula y minimo 3 caracteres");
     } else {
-        mostrarTexto("lblErrorNombre");
+        mostrarTexto("lblErrorNombre", "");
+
     }
-    if (apellidoMasyuculas != valorApellido.length || apellidoMasyuculas == 0 || valorApellido.length < 3) {
-        mostrarTexto("lblErrorApellido", "Error debe tener 3 carcteres en mayuscula");
+    if (mayusculaValidacion2 != apellido.length || mayusculaValidacion2 == 0 || apellido.length < 3) {
+        mostrarTexto("lblErrorApellido", "Error debe ingresar letras mayuscula y minimo 3 caracteres");
     } else {
-        mostrarTexto("lblErrorApellido");
+        mostrarTexto("lblErrorApellido", "");
     }
-    if (validarSueldo == false) {
+    if (sueldoValidacion == false) {
         mostrarTexto("lblErrorSueldo", "Error debe ingresar digitos, sueldo entre 400 y 5000");
     } else {
         mostrarTexto("lblErrorSueldo", "");
     }
-    //-----------Si todo valida correctamente continuar con el codigo---------
-    if (cedulaValidacion == true && nombreMayuscula == valorNombre.length && valorNombre.length >= 3 && apellidoMasyuculas == valorApellido.length && valorApellido.length >= 3 && validarSueldo == true) {
+    // ------------ si todo esta bien continuar cn el codigo     
+    if (cedulaValidacion == false && mayusculaValidacion1 == nombre.length && nombre.length >= 3 && mayusculaValidacion2 == apellido.length && apellido.length >= 3 && sueldoValidacion == true) {
+        if (esNUevo == true) {
+            let nuevo = {}
+            nuevo.cedula = cedula;
+            nuevo.nombre = nombre;
+            nuevo.apellido = apellido;
+            nuevo.sueldo = sueldo;
+            let agregar = agregarEmpleado(nuevo);
+            if (agregar == true) {
+                mostrarEmpleado();
+                alert("EMPLEADO SE GUARDO CORRECTAMENTE");
+                habili();
+                esNUevo = false;
+            }
+        }
 
-    } if (esNuevo == true) {
-        let nuevo = {}
-        nuevo.cedula = valorCedula;
-        nuevo.nombre = valorNombre;
-        nuevo.apellido = valorApellido;
-        nuevo.sueldo = valorSueldo;
-        let agregar = agregarEmpleado(nuevo);
-        mostrarEmpelado();
-        alert("Empleado se guardo correctamente");
-        agregarEmpleado();
-        habilitarComponente("txtCedula");
-        habilitarComponente("txtNombre");
-        habilitarComponente("txtApellido");
-        habilitarComponente("txtSueldo");
-        habilitarComponente("btnGuardar");
+
     }
+    if (esNUevo == false) {
+        let empleadoEncontrado = buscarEmpleado("txtBusquedaCedula");
+        if (empleadoEncontrado != null) {
+            empleadoEncontrado.nombre = empleados.nombre;
+            empleadoEncontrado.edad = empleados.edad;
+            alert("EMPLEADO MODIFICADO EXITOSAMENTE");
+            let exito = mostrarEmpleado();
+            deshabili();
+
+        }
+    }
+
+
+
 }
