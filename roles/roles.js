@@ -149,36 +149,60 @@ guardar = function () {
         mostrarTexto("lblErrorSueldo", "");
     }
     // ------------ si todo esta bien continuar cn el codigo     
-    if (cedulaValidacion == false && mayusculaValidacion1 == nombre.length && nombre.length >= 3 && mayusculaValidacion2 == apellido.length && apellido.length >= 3 && sueldoValidacion == true) {
-        if (esNUevo == true) {
-            let nuevo = {}
-            nuevo.cedula = cedula;
-            nuevo.nombre = nombre;
-            nuevo.apellido = apellido;
-            nuevo.sueldo = sueldo;
-            let agregar = agregarEmpleado(nuevo);
-            if (agregar == true) {
-                mostrarEmpleado();
-                alert("EMPLEADO SE GUARDO CORRECTAMENTE");
-                habili();
-                esNUevo = false;
-            }
-        }
-
-
-    }
-    if (esNUevo == false) {
-        let empleadoEncontrado = buscarEmpleado("txtBusquedaCedula");
-        if (empleadoEncontrado != null) {
-            empleadoEncontrado.nombre = empleados.nombre;
-            empleadoEncontrado.edad = empleados.edad;
-            alert("EMPLEADO MODIFICADO EXITOSAMENTE");
-            let exito = mostrarEmpleado();
-            deshabili();
+    if (esNUevo == true && cedulaValidacion == false && mayusculaValidacion1 == nombre.length && nombre.length >= 3 && mayusculaValidacion2 == apellido.length && apellido.length >= 3 && sueldoValidacion == true) {
+        let nuevo = {}
+        nuevo.cedula = cedula;
+        nuevo.nombre = nombre;
+        nuevo.apellido = apellido;
+        nuevo.sueldo = sueldo;
+        let agregar = agregarEmpleado(nuevo);
+        if (agregar == true) {
+            mostrarEmpleado();
+            alert("EMPLEADO SE GUARDO CORRECTAMENTE");
+            habili();
+            esNUevo = false
 
         }
+
+
+
+    } else if (esNUevo == false && cedulaValidacion == false && mayusculaValidacion1 == nombre.length && nombre.length >= 3 && mayusculaValidacion2 == apellido.length && apellido.length >= 3 && sueldoValidacion == true) {
+
+        let empleadoModificado = buscarEmpleado(cedula);
+        empleadoModificado.nombre = nombre;
+        empleadoModificado.apellido = apellido;
+        empleadoModificado.sueldo = sueldo;
+        alert("EMPLEADO MODIFICADO EXITOSAMENTE");
+        mostrarEmpleado();
+        deshabili();
     }
 
 
 
+
+}
+ejecutarBusqueda = function () {
+    let busqueda = recuperarTexto("txtBusquedaCedula");
+    let busquedaEncontrada = buscarEmpleado(busqueda);
+    if (busquedaEncontrada == null) {
+        alert("EMPLEADO NO EXISTE");
+    } else {
+        mostrarTextoEnCaja("txtCedula", busquedaEncontrada.cedula);
+        mostrarTextoEnCaja("txtNombre", busquedaEncontrada.nombre);
+        mostrarTextoEnCaja("txtApellido", busquedaEncontrada.apellido);
+        mostrarTextoEnCaja("txtSueldo", busquedaEncontrada.sueldo);
+        habilitarComponente("txtNombre");
+        habilitarComponente("txtApellido");
+        habilitarComponente("txtSueldo");
+        deshabilitarComponente("txtCedula");
+    }
+
+}
+function limpiar() {
+    mostrarTextoEnCaja("txtCedula", "");
+    mostrarTextoEnCaja("txtNombre", "");
+    mostrarTextoEnCaja("txtApellido", "");
+    mostrarTextoEnCaja("txtSueldo", "");
+    esNUevo=false;
+    deshabili();
 }
