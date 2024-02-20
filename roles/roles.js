@@ -203,6 +203,31 @@ function limpiar() {
     mostrarTextoEnCaja("txtNombre", "");
     mostrarTextoEnCaja("txtApellido", "");
     mostrarTextoEnCaja("txtSueldo", "");
-    esNUevo=false;
+    esNUevo = false;
     deshabili();
 }
+function buscarPorRol() {
+    let rol = recuperarTexto("txtBusquedaCedulaRol");
+    let rol2 = buscarEmpleado(rol);
+    if (rol2 !== null) {
+        mostrarTexto("infoCedula", rol2.cedula);
+        mostrarTexto("infoSueldo", rol2.sueldo);
+        mostrarTexto("infoNombre" , rol2.nombre + rol2.apellido);
+    } else {
+        alert("EL EMPLEADO NO EXITE");
+    }
+}
+// function ejecutarBusquedad() {
+//     let valorCedula = recuperaraTexto("txtCedulaBusquedad");
+//     let cliente = buscarCliente(valorCedula);
+
+//     if (cliente == null) {
+//         alert("Cliente no encontrado");
+
+//     } else {
+
+//         mostrarTextoEnCaja("txtCedula", cliente.cedula);
+//         mostrarTextoEnCaja("txtNombre", cliente.nombre);
+//         mostrarTextoEnCaja("txtedad", cliente.edad);
+//     }
+// }
