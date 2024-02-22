@@ -206,28 +206,34 @@ function limpiar() {
     esNUevo = false;
     deshabili();
 }
+//--------Creacion de la funcion crear buscarPorRol---------
 function buscarPorRol() {
     let rol = recuperarTexto("txtBusquedaCedulaRol");
     let rol2 = buscarEmpleado(rol);
     if (rol2 !== null) {
         mostrarTexto("infoCedula", rol2.cedula);
         mostrarTexto("infoSueldo", rol2.sueldo);
-        mostrarTexto("infoNombre" , rol2.nombre + rol2.apellido);
+        mostrarTexto("infoNombre", rol2.nombre + rol2.apellido);
     } else {
         alert("EL EMPLEADO NO EXITE");
     }
 }
-// function ejecutarBusquedad() {
-//     let valorCedula = recuperaraTexto("txtCedulaBusquedad");
-//     let cliente = buscarCliente(valorCedula);
+function calcularAporteEmpleado(SueldoEmpleado) {
+    let suledoEmple = SueldoEmpleado / 0.0945;
+    return suledoEmple;
+}
+function calcularValorAPagar(SueldoEmpl, apoetacionIess, descuento) {
+    let pagar = SueldoEmpl - apoetacionIess - descuento;
+    return pagar;
+}
+function calcularRol() {
+    let sueldo = recuperarFloatDiv("infoSueldo");
+    let descuento = recuperarFloat("txtDescuentos");
+    let aporte = calcularAporteEmpleado(sueldo);
+    mostrarTexto("infoIESS", aporte);
+    let valorAPagar = calcularValorAPagar(sueldo, aporte, descuento);
+    mostrarTexto("infoPago", valorAPagar);
 
-//     if (cliente == null) {
-//         alert("Cliente no encontrado");
-
-//     } else {
-
-//         mostrarTextoEnCaja("txtCedula", cliente.cedula);
-//         mostrarTextoEnCaja("txtNombre", cliente.nombre);
-//         mostrarTextoEnCaja("txtedad", cliente.edad);
-//     }
-// }
+    if (descuento >= 0 && descuento <= sueldo) {
+    }
+}
