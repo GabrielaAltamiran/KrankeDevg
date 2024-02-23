@@ -6,8 +6,7 @@ let empleados = [
 
 
 ]
-let roles = [
-]
+let roles = []
 let esNUevo = false;
 mostrarOpcionEmpleado = function () {
     mostrarComponente("divEmpleado");
@@ -294,8 +293,8 @@ guardarRol = function () {
     if (agregar) {
         deshabilitarComponente("btnRolGuardar");
     }
-    mostrarTotales();
     mostrarRoles();
+    mostrarTotales();
 
 }
 mostrarRoles = function () {
@@ -325,22 +324,21 @@ mostrarRoles = function () {
 }
 
 function mostrarTotales() {
-    let totalEmpleado = 0.0;
-    let totalEmpleador = 0.0;
-    let totalAPagar = 0.0;
+    let totalEmpleado = 0;
+    let totalEmpleador = 0;
+    let totalAPagar = 0;
     let elementosRoles;
     for (let i = 0; i < roles.length; i++) {
-        elementosRoles = rolest[i];
-        totalEmpleado += elementosRoles.pago;
-        totalEmpleador += elementosRoles.iees;
-        totalAPagar += elementosRoles.aporte
+        elementosRoles = roles[i];
+        totalEmpleado += elementosRoles.iees;
+        totalEmpleador += elementosRoles.aporte;
     }
+     totalAPagar=totalEmpleado+totalEmpleador;
     mostrarTexto("infoTotalPago", totalAPagar);
     mostrarTexto("infoAporteEmpresa", totalEmpleador);
     mostrarTexto("infoAporteEmpleado", totalEmpleado);
-    let totalNomina;
-    totalNomina = totalEmpleado + totalEmpleador + totalAPagar;
-    mostrarTexto("infoAporteNomina", totalNomina);
+    
+    
 
 
 }
