@@ -6,7 +6,7 @@ let empleados = [
 
 
 ]
-let roles=[
+let roles = [
 ]
 let esNUevo = false;
 mostrarOpcionEmpleado = function () {
@@ -20,6 +20,7 @@ mostrarOpcionRol = function () {
     ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
     deshabilitarComponente("btnRolGuardar");
+    mostrarRoles();
 }
 mostrarOpcionResumen = function () {
     mostrarComponente("divResumen");
@@ -231,47 +232,48 @@ function calcularValorAPagar(SueldoEmpl, apoetacionIess, descuento) {
     return pagar.toFixed(2);
 }
 function calcularRol() {
-        let sueldo = recuperarFloatDiv("infoSueldo");
-        let descuento = recuperarFloat("txtDescuentos");
-        let aporte = calcularAporteEmpleado(sueldo);
-        let aporteFloat=parseFloat(aporte);
-        let pagar = calcularValorAPagar(sueldo, aporteFloat, descuento);
-        mostrarTexto("infoIESS", aporteFloat);
-        mostrarTexto("infoPago", pagar);
-        habilitarComponente("btnRolGuardar");
+    let sueldo = recuperarFloatDiv("infoSueldo");
+    let descuento = recuperarFloat("txtDescuentos");
+    let aporte = calcularAporteEmpleado(sueldo);
+    let aporteFloat = parseFloat(aporte);
+    let pagar = calcularValorAPagar(sueldo, aporteFloat, descuento);
+    mostrarTexto("infoIESS", aporteFloat);
+    mostrarTexto("infoPago", pagar);
+    habilitarComponente("btnRolGuardar");
 
 }
 //----------Reto50--------
 
-let esNuevo; 
-esNuevo = false; 
+let esNuevo;
+esNuevo = false;
 //parte reto 50
-buscarRol = function(cedula){
-let elementoEmpleado;
-let empleadoEncontrado = null;
-for (let i = 0; i < roles.length; i++) {
-    elementoEmpleado = roles[i];
-    if (elementoEmpleado.cedula==cedula) {
-        empleadoEncontrado = elementoEmpleado; //Se almacena el arreglo encontrado en empleado encontrado
-        break; 
+buscarRol = function (cedula) {
+    let elementoEmpleado;
+    let empleadoEncontrado = null;
+    for (let i = 0; i < roles.length; i++) {
+        elementoEmpleado = roles[i];
+        if (elementoEmpleado.cedula == cedula) {
+            empleadoEncontrado = elementoEmpleado; //Se almacena el arreglo encontrado en empleado encontrado
+            break;
+        }
     }
+    return empleadoEncontrado;
 }
-return empleadoEncontrado;
-}
-agregarRol = function(rol){
+agregarRol = function (rol) {
     let resultado;
-    resultado=buscarRol(rol.cedula);
-    if (resultado==null) { //si es null este agrega rol
+    resultado = buscarRol(rol.cedula);
+    if (resultado == null) { //si es null este agrega rol
         roles.push(rol);  //agregar objeto a rol
-        alert ("ROL GUARDADO CORRECTAMENTE")
+        alert("ROL GUARDADO CORRECTAMENTE")
+        return true;
     } else {
-        alert("YA EXISTE UN EMPLEADO CON ESTE ROL "+rol.cedula)
+        alert("YA EXISTE UN EMPLEADO CON ESTE ROL " + rol.cedula)
         return false;
     }
 
 }
-calcularAporteEmpleador=function(sueldo){
-    let  calculoAporte = sueldo*(11.15/100);
+calcularAporteEmpleador = function (sueldo) {
+    let calculoAporte = sueldo * (11.15 / 100);
     return calculoAporte.toFixed(2);
 }
 guardarRol = function () {
@@ -289,9 +291,56 @@ guardarRol = function () {
     rol.pago = pago;
     rol.aporte = aporte;
     let agregar = agregarRol(rol);
-    if (agregar == true) {
-        alert("CALCULO CON EXITO");
+    if (agregar) {
         deshabilitarComponente("btnRolGuardar");
     }
+    mostrarTotales();
+    mostrarRoles();
+
+}
+mostrarRoles = function () {
+    let cmpTabla = document.getElementById("tablaResumen");
+    let contenidoTabla = "<table><tr>" +
+        "<th>CEDULA</th>" +
+        "<th>NOMBRE</th>" +
+        "<th>VALOR A PAGAR</th>" +
+        "<th>APORTE EMPLEADO</th>" +
+        "<th>APORTE EMPLEADOR</th>" +
+        "</tr>";
+
+    //bucle para mostrar los objetos
+    for (let i = 0; i < roles.length; i++) {
+        let elementoEmpleados;
+        elementoEmpleados = roles[i];
+        contenidoTabla +=
+            "<tr><td>" + elementoEmpleados.cedula + "</td>" +
+            "<td>" + elementoEmpleados.nombre + "</td>" +
+            "<td>" + elementoEmpleados.iees + "</td>" +
+            "<td>" + elementoEmpleados.pago + "</td>" +
+            "<td>" + elementoEmpleados.aporte + "</td>" +
+            "</tr>"
+    }
+    contenidoTabla += "</table>"
+    cmpTabla.innerHTML = contenidoTabla;
+}
+
+function mostrarTotales() {
+    let totalEmpleado = 0.0;
+    let totalEmpleador = 0.0;
+    let totalAPagar = 0.0;
+    let elementosRoles;
+    for (let i = 0; i < roles.length; i++) {
+        elementosRoles = rolest[i];
+        totalEmpleado += elementosRoles.pago;
+        totalEmpleador += elementosRoles.iees;
+        totalAPagar += elementosRoles.aporte
+    }
+    mostrarTexto("infoTotalPago", totalAPagar);
+    mostrarTexto("infoAporteEmpresa", totalEmpleador);
+    mostrarTexto("infoAporteEmpleado", totalEmpleado);
+    let totalNomina;
+    totalNomina = totalEmpleado + totalEmpleador + totalAPagar;
+    mostrarTexto("infoAporteNomina", totalNomina);
+
 
 }
